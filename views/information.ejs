@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/information.css">
+</head>
+<body>
+    <div class="information">
+        <img src="https://i.imgur.com/l205sNT.png" alt="Logo" srcset="" style="max-width: 170px">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item" id="-1"><a href="/my-cart">Cart</a></li>
+            <li class="breadcrumb-item active" id="0" aria-current="page">Information</a></li>
+            <li class="breadcrumb-item" id="1"><span>Shipping</span></li>
+            <li class="breadcrumb-item" id="2"><span>Payment</span></li>
+        </ul>
+        
+        <!--INFORMATION-->
+        <form class="form-info" action="/shipping" method="POST">
+            <div class="info-input">
+                <div class="contact-info">
+                    <h5 style="text-align: left; width:49%; display: inline-block;margin-bottom:10px;">Contact Information</h5>
+                        <input type="text" name="email-tel" id="email-tel" class="form-control" placeholder="Email or mobile phone number" required pattern="([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$)|(0+[0-9]{9})">   
+                </div>
+                
+                <div class="shipping-address" style="margin-top:40px;margin-bottom:30px;">
+                    <h5 style="margin-bottom:10px;">Shipping address</h5>
+                        <input style="float: left; width:49%;" type="text" name="firstName" id="firstName" class="form-control" placeholder="First name" required>
+                        <input style="float: right; width:49%;"type="text" name="lastName" id="lastName" class="form-control" placeholder="Last Name" required >
+                        <input type="text" name="address" id="address" class="form-control" placeholder="Address" required>
+                        <input type="text" name="apartment" id="apartment" class="form-control" placeholder="Apartment, suite, etc. (optional)">
+                        <input type="text" name="city" id="city" class="form-control" placeholder="City" required>
+                </div>
+            </div>
+            
+            <div class="checking">
+                <input class="btn" type="submit" value="Continue to shipping"onclick="next()">
+                <a class="return" href="/my-cart">Return to Cart</a>
+            </div>
+    </form>
+    </div>
+        
+    <%- include('./partials/cost-discount') %>
+
+    <script>
+        document.getElementById("total").innerHTML=document.getElementById("subtotal").innerHTML;
+        function myFunction() {
+            var cash = document.getElementById("cash");
+            var credit = document.getElementById("credit");
+            var credit_form = document.getElementById("credit_form");
+            if (credit.checked == true){
+                credit_form.style.display = "table-row";
+            } 
+            if(cash.checked==true){
+                credit_form.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        document.getElementById("email-tel").value=sessionStorage.getItem("email-tel");
+        document.getElementById("address").value=sessionStorage.getItem("address");
+        document.getElementById("firstName").value=sessionStorage.getItem("firstName");
+        document.getElementById("lastName").value=sessionStorage.getItem("lastName");
+        document.getElementById("apartment").value=sessionStorage.getItem("apartment");
+        document.getElementById("city").value=sessionStorage.getItem("city");
+        
+        function next(){
+            sessionStorage.setItem("email-tel",document.getElementById("email-tel").value);
+            sessionStorage.setItem("address",document.getElementById("address").value);
+            sessionStorage.setItem("firstName",document.getElementById("firstName").value);
+            sessionStorage.setItem("lastName",document.getElementById("lastName").value);
+            sessionStorage.setItem("city",document.getElementById("city").value);
+            sessionStorage.setItem("apartment",document.getElementById("apartment").value);
+        }
+    </script>
+
+</body>
+</html>
