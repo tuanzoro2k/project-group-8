@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/account-detail.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display" />
+</head>
+<body>
+    <header>
+        <%- include('./partials/header') %> 
+    </header>
+    <div class="headphone-image">
+        <div class="shopping-cart">
+           <h1 style="font-family: 'Times New Roman', Times, serif;">Account</h1>
+           <p>
+               <span>
+                <a style="color:white" href="/" title="Back to the front page">Home</a>
+               </span>
+               / Account
+           </p>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="account-detail">
+            <h2>Account Details</h2>
+            <table style="width:60%;margin:30px 0;">
+                <tr>
+                    <td>Name:</td>
+                    <td><%= rows[0].FirstName %> <%= rows[0].LastName %></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><%= rows[0].Email %></td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td><%= rows[0].Phone %></td>
+                </tr> 
+                <tr>
+                    <td>City:</td>
+                    <td><%= rows[0].City %></td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="order-history">
+            <h2>Order History</h2>
+            <!-- < for (let i = 0; i < orders.length; i++) {%>  -->
+                <div class="order" style="width:100%;">
+                    <div class="header">
+                        <div class="date">
+                        Date: <span>25/06/2021</span>
+                        </div>
+                        <!-- <button class="btn" onclick="remove()">Remove</button> -->
+                    </div>
+                    <table>
+                        <colgroup>
+                            <col span="1" style="width: 15%;">
+                            <col span="1" style="width: 55%;">
+                            <col span="1" style="width: 10%;">
+                            <col span="1" style="width: 20%;">
+                        </colgroup>
+                        <tr>
+                            <td>
+                                <img src="//cdn.shopify.com/s/files/1/0437/0454/9536/products/shop-5_87c12970-4390-44ce-b87d-bb3f3bef7833_medium.jpg?v=1596620955">
+                            </td>
+                            
+                            <td class="info" style="padding-left:10px;">
+                                <span class="product-name" style="font-weight:600;font-size:28px;"><Comfort Earphone></span>
+                                <br>
+                                <span class="product-description"  >2.5 mm / Black / Silicon</span>
+                            </td>
+                            
+                            <td class="quantity" >x 1</td>
+                            
+                            <td class="price">$910.00</td>
+                        </tr>
+                    </table>
+                    <div class="total">
+                        Total: $<span>930.00</span> 
+                    </div>
+                </div>
+            <!-- < } %>  -->
+        </div>
+    </div>
+    <footer>
+        <%- include('./partials/footer') %> 
+    </footer>
+</body>
+</html>
