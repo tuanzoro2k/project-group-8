@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style-product.css">
+</head>
+<body>
+    <header>
+        <%- include('./partials/header') %> 
+    </header>
+    <div class="headphone-image">
+        <div class="shopping-cart">
+           <h1 style="font-family: 'Times New Roman', Times, serif;">PRODUCTS</h1>
+           <p>
+               <span>
+                <a style="color:white" href="/" title="Back to the front page">Home</a>
+               </span>
+               / Products
+           </p>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="side-bar">
+            <div class="widget category">
+                <h4>Category</h4>
+                <ul>
+                    <% for(let i = 0; i < cate.length; i++) { %>
+                    <% var slug = cate[i].Category_name.toLowerCase(); %> 
+                    <% slug = slug.replace(/\s/g, '-');%>
+                        <li>
+                            <a href="/catalog/collections/<%- slug%>"><%- cate[i].Category_name%></a>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="color">
+                <h4>Shop By Color</h4>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="white" class="byColor" onclick="filterColor(this.id)">
+                        <span class="s1">
+                            <label for="white">
+                                <span class="s2" style="background:white"></span>
+                            </label>
+                        </span>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="blue" class="byColor" onclick="filterColor(this.id)">
+                        <span class="s1">
+                            <label for="blue">
+                                <span class="s2" style="background:blue"></span>
+                            </label>
+                        </span>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="black" class="byColor" onclick="filterColor(this.id)">
+                        <span class="s1">
+                            <label for="black">
+                                <span class="s2" style="background:black"></span>
+                            </label>
+                        </span>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="red" class="byColor" onclick="filterColor(this.id)">
+                        <span class="s1">
+                            <label for="red">
+                                <span class="s2" style="background:red"></span>
+                            </label>
+                        </span>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="green" class="byColor" onclick="filterColor(this.id)">
+                        <span class="s1">
+                            <label for="green">
+                                <span class="s2" style="background:#1c531c"></span>
+                            </label>
+                        </span>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="orange" class="byColor" onclick="filterColor(this.id)">
+                        <span class="s1">
+                            <label for="orange">
+                                <span class="s2" style="background:#c0762b"></span>
+                            </label>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="widget price">
+                <h4>Shop By Price</h4>
+                <ul>
+                    <li>
+                        <label class="price-number">< $500
+                            <input type="checkbox" name="price" id="0-500" class="byPrice" onclick="filterPrice(this.id)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="price-number">$500 - $1000
+                            <input type="checkbox" name="price" id="500-1000" class="byPrice" onclick="filterPrice(this.id)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="price-number">$1000 - $1500
+                            <input type="checkbox" name="price" id="1000-1500" class="byPrice" onclick="filterPrice(this.id)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="price-number">$1500 - $2000
+                            <input type="checkbox" name="price" id="1500-2000" class="byPrice" onclick="filterPrice(this.id)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="price-number">$2000 - $2500
+                            <input type="checkbox" name="price" id="2000-2500" class="byPrice" onclick="filterPrice(this.id)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="price-number">> $2500
+                            <input type="checkbox" name="price" id="2500-3000" class="byPrice" onclick="filterPrice(this.id)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="widget brand">
+                <h4>Shop By Brand</h4>
+                <ul>
+                    <% for (let i = 0; i < brand.length; i++) { %>
+                        <li>
+                            <label class="brand-name"><%= brand[i] %> 
+                                <input type="checkbox" name="brand" class="byBrand" id="<%= brand[i] %>"  value="<%= brand[i] %>" onclick="filterBrand(this.id)">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+        <!-- function for side bar --> 
+        <script>
+            var checkBrandArr = [];
+            var checkPriceArr = [];
+            var checkColorArr = [];
+            function filterBrand(id) {
+                console.log(id)
+                if (document.getElementById(id).checked == true) {
+                    checkBrandArr.push(id);
+                }
+                else {
+                    checkBrandArr = checkBrandArr.filter(function(e) {return e != id});
+                }
+                filter();
+            }
+            function filterPrice(id) {
+                console.log(id)
+                if (document.getElementById(id).checked == true) {
+                    checkPriceArr.push(id);
+                }
+                else {
+                    checkPriceArr = checkPriceArr.filter(function(e) {return e != id});
+                }
+                filter();
+            }
+            function filterColor(id) {
+                console.log(id)
+                if (document.getElementById(id).checked == true) {
+                    checkColorArr.push(id);
+                }
+                else {
+                    checkColorArr = checkColorArr.filter(function(e) {return e != id});
+                }
+                filter();
+            }
+            function filter() {
+                axios.patch('/catalog/filter', {
+                        brand: checkBrandArr,
+                        price: checkPriceArr,
+                        color: checkColorArr,
+                        url: window.location.href,
+                })
+                .then(function (response) {
+                    console.log(response);
+                    console.log(response.data.length);
+                    $("#product-area").children().hide();
+                    console.log("here")
+                    for (let i = 0; i < response.data.length; i++) {
+                        $("#product-area").append('<div class="col-3 list-inline-item filter-item" id="filter-item" style="padding:0 15px 20px; text-align:center; margin-right: 0"><div class="item-image" style="margin-bottom:20px;"><a href="/catalog/product/' + response.data[i].slug + '"><img id="img-wrap" src="'+ response.data[i].thumbnail_photo +'" style="width: 100%;; visibility: visible;"></a></div><div class="item-rating" style="margin-bottom: 10px;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><div class="item-title"style="margin-bottom:5px;"><a id="item-name" href="#" style="font-size: 16px; color:#fc846b; transition: 0.4s;">'+ response.data[i].ProductName +'</a></div><div id="item-price" class="item-price">$'+ response.data[i].Price +'</div></div>');
+                        // document.getElementById("filter-item").setAttribute("id", ""+ response.data[i].Brand_name +"");
+                        $("#item-name").hover(function() {
+                            $(this).css({"text-decoration": "none", "color": "black"});
+                        }, function() {
+                            $(this).css("color", "#fc846b");
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            }
+
+            
+            // const classname = document.querySelectorAll('.byBrand');
+            // Array.from(classname).forEach(function(element) {
+            //     element.addEventListener('change', function() {
+            //         if (element.checked == true) {
+            //             document.getElementById("product-collection").classList.add("d-none");
+            //             var id = element.getAttribute("id");
+            //             checkArr.push(id);
+                        
+            //         } else {
+            //             var id = element.getAttribute("id");
+            //             checkArr = checkArr.filter(function(e) {return e != id});
+            //             // var id = element.getAttribute("id");
+            //             // console.log(id)
+            //             // document.getElementById(id).style.visibility = "hidden";
+            //             // location.reload();
+            //         }
+            //         axios.patch('/catalog/byBrand', {
+            //             id: checkArr,
+            //         })
+            //         .then(function (response) {
+            //             console.log(response);
+            //             console.log(response.data.length);
+            //             $("#product-area").children().hide();
+            //             for (let i = 0; i < response.data.length; i++) {
+            //                 $("#product-area").append('<div class="col-3 list-inline-item filter-item" id="filter-item" style="padding:0 15px 20px; text-align:center; margin-right: 0"><div class="item-image" style="margin-bottom:20px;"><a href="/catalog/product"><img id="img-wrap" src="'+ response.data[i].thumbnail_photo +'" style="width: 100%;; visibility: visible;"></a></div><div class="item-rating" style="margin-bottom: 10px;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><div class="item-title"style="margin-bottom:5px;"><a id="item-name" href="#" style="font-size: 16px; color:#fc846b; transition: 0.4s;">'+ response.data[i].ProductName +'</a></div><div id="item-price" class="item-price">$'+ response.data[i].Price +'</div></div>');
+            //                 document.getElementById("filter-item").setAttribute("id", ""+ response.data[i].Brand_name +"");
+            //                 $("#item-name").hover(function() {
+            //                     $(this).css({"text-decoration": "none", "color": "black"});
+            //                 }, function() {
+            //                     $(this).css("color", "#fc846b");
+            //                 })
+            //             }
+            //         })
+            //         .catch(function (error) {
+            //             console.log(error);
+            //         });
+            //     });
+            // })
+
+            // var classPrice = document.querySelectorAll('.byPrice');
+            // Array.from(clas)
+        </script>
+
+        <div class="product-section">
+            <div class="toolbar d-flex justify-content-end">
+                <label>SORT BY: </label>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        Featured
+                    </button>
+                    <div class="dropdown-content" >
+                        <a href="/catalog" id="Featured" class="dropdown-item">Featured</a>
+                        <!-- <button id="Featured" class="dropdown-item" >Featured</button> -->
+                        <button id="PriceAsc" class="dropdown-item">Price, low to high</button>
+                        <button id="PriceDesc" class="dropdown-item">Price, high to low</button>
+                        <button id="AtoZ" class="dropdown-item">A-Z</button>
+                        <button id="ZtoA" class="dropdown-item">Z-A</button>
+                        <!-- <a href="#" id="AtoZ" class="dropdown-item">A-Z</a>
+                        <a href="#" id="ZtoA" class="dropdown-item">Z-A</a> -->
+                        <button id="DateOldToNew" class="dropdown-item">Date, old to new</button>
+                        <button id="DateNewToOld" class="dropdown-item">Price, new to old</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row product-collection" id="product-area">
+                <% for(var i = 0; i < rows.length; i++){ %>
+                    <div class="col-3 column <%=rows[i].Brand_name%>" >
+                       <div class="item-image" style="margin-bottom:20px;">
+                           <a href="/catalog/product/<%= rows[i].slug %>">
+                               <img src="<%= rows[i].thumbnail_photo%>" style="width: 100%;; visibility: visible;">
+                           </a>
+                       </div>
+                       <div class="item-rating" style="margin-bottom: 10px;">
+                           <% for(var j=0; j< parseInt(rows[i].rating);j++){ %>
+                                <i class="fa fa-star"></i>
+                           <% } %>
+                           <% if(parseInt(rows[i].rating)< rows[i].rating){ %>
+                                <i class="fa fa-star-half-o"></i>
+                           <% } %>
+                           <% for(var j=0;j< parseInt(5-rows[i].rating);j++){ %>
+                            <i class="fa fa-star-o"></i>
+                           <% } %>
+                       </div>
+                       <div class="item-title"style="margin-bottom:5px;" >
+                           <a href="/catalog/product/<%= rows[i].slug %>"><%= rows[i].ProductName%></a>
+                       </div>
+                       <div class="item-price">$<%= rows[i].Price%></div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Funtion for dropdown menu
+        const dropArray = document.querySelectorAll(".dropdown-item");
+        Array.from(dropArray).forEach(function(element) {
+            element.addEventListener('click', function() {
+                var affect = element.getAttribute("id");
+                // console.log(affect);
+                // , {
+                //             affect: affect,
+                //             url: window.location.href,
+                // }
+                axios.patch('/catalog/all?sort_by=' + affect, {
+                    affect: affect,
+                    url: window.location.href,
+                })
+                .then(function (response) {
+                    console.log(response);
+                    $("#product-area").children().hide();
+                    for (let i = 0; i < response.data.length; i++) {
+                        $("#product-area").append('<div class="col-3 list-inline-item filter-item" id="filter-item" style="padding:0 15px 20px; text-align:center; margin-right: 0"><div class="item-image" style="margin-bottom:20px;"><a href="/catalog/product"><img id="img-wrap" src="'+ response.data[i].thumbnail_photo +'" style="width: 100%;; visibility: visible;"></a></div><div class="item-rating" style="margin-bottom: 10px;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><div class="item-title"style="margin-bottom:5px;"><a id="item-name" href="#" style="font-size: 16px; color:#fc846b; transition: 0.4s;">'+ response.data[i].ProductName +'</a></div><div id="item-price" class="item-price">$'+ response.data[i].Price +'</div></div>');
+                        document.getElementById("filter-item").setAttribute("id", ""+ response.data[i].Brand_name +"");
+                        $("#item-name").hover(function() {
+                            $(this).css({"text-decoration": "none", "color": "black"});
+                        }, function() {
+                            $(this).css("color", "#fc846b");
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            })
+        })
+    </script>
+    <footer>
+        <%- include('./partials/footer') %> 
+    </footer>
+</body>
+</html>

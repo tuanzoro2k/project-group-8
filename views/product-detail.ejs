@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/product-detail.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'>
+    <style>
+ 
+    </style>
+</head>
+<body>
+    <header>
+        <%- include('./partials/header') %> 
+    </header>
+    <!--MAIN CONTENT-->
+    <div class="headphone-image">
+        <div class="shopping-cart">
+           <h1 style="font-family: 'Times New Roman', Times, serif;">COMFORT EARPHONE</h1>
+           <p>
+               <span>
+                <a style="color:white" href="/" title="Back to the front page">All</a>
+               </span>
+               / Comfort Earphone
+           </p>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="side-bar">
+            <div class="widget category">
+                <h4>Category</h4>
+                <ul>
+                    <li>
+                        <a href="/catalog/collections/wireless-headphone">Wireless Headphone</a>
+                    </li>
+                    <li>
+                        <a href="/catalog/collections/bluetooth">Wireless Earphone</a>
+                    </li>
+                    <li>
+                        <a href="/catalog/collections/in-ear">Noise Cancellation</a>
+                    </li>
+                    <li>
+                        <a href="/catalog/collections/sport-earbuds">Gaming</a>
+                    </li>
+                    <li>
+                        <a href="/catalog/collections/sport-earbuds">Sports</a>
+                    </li>
+                    <li>
+                        <a href="/catalog/collections/sport-earbuds">True Wireless Earbuds</a>
+                    </li>
+                    <li>
+                        <a href="/catalog/collections/sport-earbuds">In-Ear</a>
+                    </li>
+                    <li>
+                        <a href="/catalog/collections/sport-earbuds">DJ Headphone</a>
+                    </li>                
+                </ul>    
+            </div>
+            
+            
+            <div class="widget hot-deal">
+                <h4>Hot deals</h4>
+                <div class="owl-carousel owl-theme hot"style="margin-top:40px;">
+                    <div class="item">
+                        <div class="item-image" style="margin-bottom:20px;">
+                            <a href="#">
+                                <img style="width: 100%;; visibility: visible;"src="https://cdn.shopify.com/s/files/1/0437/0454/9536/products/shop-42_40206bfd-45c1-4077-acc8-3d9bfc2d51a5_350X.jpg?v=1596620997"  >               
+                            </a>
+                        </div>
+                        <div class="item-rating" style="margin-bottom: 5px;">
+                            <i class="fa fa-star"></i>   
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="item-title" style="margin-bottom:5px;" >
+                            <a href="#">V50 Earphone</a>
+                        </div>
+                        <div class="item-price">$900.00</div>
+                    </div>
+                    <div class="item">
+                        <div class="item-image" style="margin-bottom:20px;">
+                            <a href="#">
+                                <img style="width: 100%;; visibility: visible;"src="https://cdn.shopify.com/s/files/1/0437/0454/9536/products/shop-42_40206bfd-45c1-4077-acc8-3d9bfc2d51a5_350X.jpg?v=1596620997"  >               
+                            </a>
+                        </div>
+                        <div class="item-rating" style="margin-bottom: 5px;">
+                            <i class="fa fa-star"></i>   
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="item-title" style="margin-bottom:5px;" >
+                            <a href="#">V50 Earphone</a>
+                        </div>
+                        <div class="item-price">$900.00</div>
+                    </div>
+                    <div class="item">
+                        <div class="item-image" style="margin-bottom:20px;">
+                            <a href="#">
+                                <img style="width: 100%;; visibility: visible;"src="https://cdn.shopify.com/s/files/1/0437/0454/9536/products/shop-42_40206bfd-45c1-4077-acc8-3d9bfc2d51a5_350X.jpg?v=1596620997"  >               
+                            </a>
+                        </div>
+                        <div class="item-rating" style="margin-bottom: 5px;">
+                            <i class="fa fa-star"></i>   
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="item-title" style="margin-bottom:5px;" >
+                            <a href="#">V50 Earphone</a>
+                        </div>
+                        <div class="item-price">$900.00</div>
+                    </div>
+                    <div class="item">
+                        <div class="item-image" style="margin-bottom:20px;">
+                            <a href="#">
+                                <img style="width: 100%;; visibility: visible;"src="https://cdn.shopify.com/s/files/1/0437/0454/9536/products/shop-42_40206bfd-45c1-4077-acc8-3d9bfc2d51a5_350X.jpg?v=1596620997"  >               
+                            </a>
+                        </div>
+                        
+                        <div class="item-rating" style="margin-bottom: 5px;">
+                            <i class="fa fa-star"></i>   
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="item-title" style="margin-bottom:5px;" >
+                            <a href="#">V50 Earphone</a>
+                        </div>
+                        <div class="item-price">$900.00</div>
+                    </div>
+                </div>
+             </div>
+            
+            
+             <div class="widget best-seller">
+                <h4>Best Seller</h4>    
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <div class="item-rating" style="margin-bottom: 5px;">
+                                <i class="fa fa-star"></i>   
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="item-title" style="margin-bottom:5px;" >
+                                <a href="#">V45 Earphone</a>
+                            </div>
+                            <div class="item-price">$900.00</div>
+                        </td>
+                        <td>
+                            <a href="#">
+                                <img src="https://cdn.shopify.com/s/files/1/0437/0454/9536/products/shop-27_301aa288-d998-445a-8c2f-7c9a35c52bb8_small.jpg?v=1596621004" alt="">
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="item-rating" style="margin-bottom: 5px;">
+                                <i class="fa fa-star"></i>   
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="item-title" style="margin-bottom:5px;" >
+                                <a href="#">V50 Earphone</a>
+                            </div>
+                            <div class="item-price">$900.00</div>
+                        </td>
+                        <td>
+                            <a href="#">
+                                <img src="https://cdn.shopify.com/s/files/1/0437/0454/9536/products/shop-42_40206bfd-45c1-4077-acc8-3d9bfc2d51a5_small.jpg?v=1596620997" alt="">
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="item-rating" style="margin-bottom: 5px;">
+                                <i class="fa fa-star"></i>   
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <div class="item-title" style="margin-bottom:5px;" >
+                                <a href="#">Trendy Earbud</a>
+                            </div>
+                            <div class="item-price">$910.00</div>
+                        </td>
+                    <td>
+                        <a href="#">
+                            <img src="https://cdn.shopify.com/s/files/1/0437/0454/9536/products/shop-38_23f820d8-ef3a-4223-9734-3e6f29817b89_small.jpg?v=1596620991" alt="">
+                        </a>
+                    </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="item-rating" style="margin-bottom: 5px;">
+                                <i class="fa fa-star"></i>   
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="item-title" style="margin-bottom:5px;" >
+                                <a href="#">V42 Earphone</a>
+                            </div>
+                            <div class="item-price">$900.00</div>
+                        </td>
+                        <td>
+                            <a href="#">
+                                <img src="https://cdn.shopify.com/s/files/1/0437/0454/9536/products/shop-3_ecb7b899-fa05-422d-9a3f-75098acf2299_small.jpg?v=1596620951" alt="">
+                            </a>
+                        </td>
+                    </tr>                   
+                </table>
+            </div>
+        </div>
+        
+        <div class="product-info">
+            
+            <div class="detail"style="overflow:hidden;margin-bottom:40px;">
+                <div class="product-image">
+                    <img id="big" class="big-img" src="<%= rows[0].thumbnail_photo%>" alt="">
+                    <div class="img-list"align="center" style="margin-top:20px;">
+                        <% for(let i = 0; i < imageUrl.length; i++) { %>
+                            <img id="<%= i %> " class="other-img" src="<%= imageUrl[i]%>" alt="" onclick="image(this.id, this.src)">
+
+                        <% } %>
+                    </div>
+                    <script>
+                        function image(id, newSrc){
+                            var classname = document.getElementsByClassName("other-img");
+                            Array.from(classname).forEach(function(element) {
+                                element.style.cssText = null
+                            })
+                            document.getElementById(id).style.border = "1px solid silver"
+                            document.getElementById("big").src = newSrc;
+                        }
+                    </script>
+
+                </div>
+                
+                <div class="product-detail">
+
+                    <h2><%= rows[0].ProductName %></h2>
+                    <div class="item-rating" style="margin-bottom: 5px;">
+                        <% for(var j=0; j< parseInt(rows[0].rating);j++){ %>
+                            <i class="fa fa-star"></i>
+                       <% } %>
+                       <% if(parseInt(rows[0].rating)< rows[0].rating){ %>
+                            <i class="fa fa-star-half-o"></i>
+                       <% } %>
+                       <% for(var j=0;j< parseInt(5-rows[0].rating);j++){ %>
+                        <i class="fa fa-star-o"></i>
+                       <% } %>
+                    </div>
+                    <table style="width:100%;margin-bottom:30px;">
+                        <tr>
+                            <td>Price</td>
+                            <td style="color: #fc846b;">$<span id="price"><%=rows[0].Price%></span></td>
+                        </tr>
+                        <tr>
+                            <td>Color</td>
+                            <td class="color">
+                                <input type="radio" id="white" name="color" checked onlclick="">
+                                <span class="s1">
+                                    <label for="white">
+                                        <span class="s2" style="background:white"></span>
+                                    </label>
+                                </span>
+
+                                <input type="radio" id="blue" name="color" onclick="">
+                                <span class="s1">
+                                    <label for="blue">
+                                        <span class="s2" style="background:blue"></span>
+                                    </label>
+                                </span>
+
+                                <input type="radio" id="red" name="color" onclick="">
+                                <span class="s1">
+                                    <label for="red">
+                                        <span class="s2" style="background:red"></span>
+                                    </label>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Material</td>
+                            <td><%=rows[0].Material%></td>
+                        </tr>
+                       
+                        <tr>
+                            <td>Brand</td>
+                            <td><%=rows[0].Brand_name%></td>
+                        </tr>
+                       
+                        <tr>
+                            <td>Product Type</td>
+                            <td>Wireless EarPhone</td>
+                        </tr>
+                       
+                        <tr>
+                            <td>Availability</td>
+                            <td style="color:green;"><%= rows[0].ProductState %></td>
+                        </tr>
+
+                        <tr>
+                            <td>Quantity</td>
+                            <td style="display:flex;"> 
+                                <input type="button" value="-" class="button" onclick="minus()">
+                                <div class="quantity" data-id="1" id="number"style="padding-top:4px">1</div>
+                                <input type="button" value="+" class="button" onclick="plus(<%=rows[0].ProductStock%>)">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Subtotal</td>
+                            <td style="color:#fc846B">$<span id="total"><%=rows[0].Price%></span></td>
+                        </tr>
+                        <script>
+                            var n = parseInt(document.getElementById("number").textContent);
+                            var price=parseInt(document.getElementById("price").textContent);
+                            var total=0;
+                            function minus(){
+                                if(n>1){
+                                    n--;
+                                    total=price*n;
+                                    document.getElementById("number").innerHTML=n;
+                                    document.getElementById("total").innerHTML=total;
+                                }
+                            }
+                            function plus(stock){
+                                if(n<parseInt(stock)){
+                                n++;
+                                total=price*n;
+                                document.getElementById("number").innerHTML=n;
+                                document.getElementById("total").innerHTML=total;
+                                }    
+                            }
+                        </script>
+
+                    </table>
+                    <button type="submit" class="left" id="addToCartBtn">Add to cart</button>
+                    <% if(sess) {%>
+                        <a class="btn right buy-it-now" id="buyItNow" href="/my-cart">Buy it now</a>
+                    <% } else { %>
+                        <button type="submit" class="right" id="buyItNow">Buy it now</button>
+                    <% } %>  
+                </div>
+            </div>
+
+            
+
+
+            <h3 style="color:#fc846B;">Product description</h3>
+            <div class="description">
+                <% for(var i=0;i < descript.length/2; i++){ %>
+                    <div class="descript-item">
+                        <div class="descript-header">
+                            <p><%=descript[i*2]%></p>
+                        </div>
+                        <div class="descript-par">
+                            <p><%=descript[i*2+1]%></p>
+                        </div>
+                    </div>
+                <% } %>
+
+            </div>
+            
+            <h2>Related Products</h2>
+            <div class="owl-carousel owl-theme relate"style="margin-top:40px;">
+                <% for(let i=0;i < cate_arr.length; i++){%>
+                    <div class="item">
+                        <div class="item-image" style="margin-bottom:20px;">
+                            <a href="/catalog/product/<%= cate_arr[i].slug %>">
+                                <img style="width: 100%;; visibility: visible;"src="<%=cate_arr[i].thumbnail_photo%>"  >               
+                            </a>
+                        </div>
+                        <div class="item-rating" style="margin-bottom: 5px;">
+                            <% for(var j=0; j< parseInt(cate_arr[i].rating);j++){ %>
+                                <i class="fa fa-star"></i>
+                           <% } %>
+                           <% if(parseInt(cate_arr[i].rating)< cate_arr[i].rating){ %>
+                                <i class="fa fa-star-half-o"></i>
+                           <% } %>
+                           <% for(var j=0;j< parseInt(5-cate_arr[i].rating);j++){ %>
+                            <i class="fa fa-star-o"></i>
+                           <% } %>
+                        </div>
+                        <div class="item-title" style="margin-bottom:5px;" >
+                            <a href="/catalog/product/<%= cate_arr[i].slug %>"><%=cate_arr[i].ProductName%></a>
+                        </div>
+                        <div class="item-price"><%=cate_arr[i].Price%></div>
+                    </div>
+               <% } %>
+            </div>
+        </div>   
+    </div>
+    <!-- Confirm windows -->
+    <div class="confirm" id="confirm">
+        <div class="confirm-content ">
+            <span onclick="document.getElementById('confirm').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <div class="product">
+                <p style="margin-bottom:30px;">Product successfully added to your shopping cart</p>
+                <div class="product-photo">
+                    <img src="<%= rows[0].thumbnail_photo%>">  
+                </div>
+                <div class="product-descript">
+                    <h2 style="font-size:20px"><%= rows[0].ProductName %></h2>
+                    <p>Price: $<span id="price"><%=rows[0].Price%></span></p>
+                    <p>Qty: <span id="quantity"></span></p>
+                </div>
+            </div>
+            <div class="cart-info">
+                <p>There are now <span id="totalItem"></span> item(s) in your cart</p>
+                <h1 style="margin-bottom:30px;">$<span id="totalCost"></span>.00 USD</h1>
+                <button  class="left" onclick="document.getElementById('confirm').style.display='none'">Continue Shopping</button>
+                <a class="btn" href="/my-cart">View Cart</a>
+            </div>
+        </div>
+    </div>
+    <!-- carousel funtion -->
+    <script>
+        $('.relate').owlCarousel({
+        items:4,
+        nav:true,
+        loop:true,
+        dots:false,
+        navText: ["<div class='nav-button owl-prev'>‹</div>", "<div class='nav-button owl-next'>›</div>"],
+    })
+    </script>
+    <script>
+        $('.hot').owlCarousel({
+        items:1,
+        nav:true,
+        loop:true,
+        dots:false,
+        navText: ["<div class='nav-button owl-prev'>‹</div>", "<div class='nav-button owl-next'>›</div>"],
+    })
+    </script>
+    <!-- Add to cart function -->
+    <script>
+        var modal = document.getElementById("confirm");
+        var Item = parseInt('<%= totalItem%>');
+        var Cost = parseInt('<%= totalCost%>');
+        document.getElementById("addToCartBtn").onclick = function() {
+            var check = '<%= checkUser %>';
+            if (check.localeCompare("have_user") == 0) {
+                modal.style.display= "block";
+                document.getElementById("quantity").innerHTML = document.getElementById("number").innerHTML;
+                let quantity = parseInt(document.getElementById("number").textContent);
+                let productID = parseInt('<%= rows[0].ProductID %>');
+                Item += quantity;
+                document.getElementById("totalItem").innerHTML = Item;
+                Cost += quantity * parseInt('<%= rows[0].Price %>');
+                document.getElementById("totalCost").innerHTML = Cost;
+                axios.patch('/catalog/product/add-to-cart', {
+                    productID: productID,
+                    quantity: quantity,
+                    cartID: parseInt('<%= userInfo.cartid %>')
+                })
+                .then(function(response) {
+                    console.log("successfully")
+                })
+                .catch(function(error) {
+                    console.log(error);
+                })
+            } 
+            if (check.localeCompare("no_user") == 0) {
+                alert("You need to login to add to cart!")
+            }
+        }
+        window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display="none";
+                }
+        }
+        document.getElementById("buyItNow").onclick = function () {
+            var check = '<%= checkUser %>';
+            console.log(check)
+            if (check.localeCompare("have_user") == 0) {
+                let quantity = parseInt(document.getElementById("number").textContent);
+                let productID = parseInt('<%= rows[0].ProductID %>');
+                axios.patch('/catalog/product/add-to-cart', {
+                    productID: productID,
+                    quantity: quantity,
+                    cartID: parseInt('<%= userInfo.cartid %>')
+                })
+                .then(function(response) {
+                    console.log("successfully")
+                })
+                .catch(function(error) {
+                    console.log(error);
+                })
+            } 
+            if (check.localeCompare("no_user") == 0) {
+                alert("You need to login to add to cart!")
+            }
+        }
+    </script>
+    <!-- Add to cart function -->
+    <footer>
+        <%- include('./partials/footer') %> 
+    </footer>
+</body>
+</html>
