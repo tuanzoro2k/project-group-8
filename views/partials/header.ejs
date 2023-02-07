@@ -1,0 +1,51 @@
+<!-- Header -->
+<div class="header-content-cart">
+    <div class="head-menubar-cart d-flex align-items-center">
+        <div class="container-bg">
+            <div class="row">
+                <div class="col-2">
+                    <a href="/"><img src="https://i.imgur.com/l205sNT.png" alt="Logo" srcset="" style="max-width: 170px"></a>
+                </div>
+                <div class="col-8">
+                    <div class="sidemenu-holder">
+                        <nav class="navbar navbar-expand-lg">
+                            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link product_page" href="/catalog">Catalog</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Blog</a>
+                                    </li>
+                                    <li class="nav-item blog">
+                                        <a class="nav-link" href="#">Pages</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="header-icon">
+                        <ul class="list-inline d-flex justify-content-end">
+                            <li class="list-inline-item cart">
+                                <a href="/my-cart"><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+                            <li class="list-inline-item user" style="margin-inline-end: 40px;">
+                                <a href="/account/login" title="Register"><i class="far fa-user fa-lg"></i></a>
+                            </li>
+                            <% if(sess) {%>
+                                <li class="list-inline-item logout">
+                                    <a href="/account/logout"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                                </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header -->
