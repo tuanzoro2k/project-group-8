@@ -1,0 +1,53 @@
+<div class="side">
+    <div class="product-table" style="width:100%;">
+        <table>
+            <colgroup>
+                <col span="1" style="width: 15%;">
+                <col span="1" style="width: 55%;">
+                <col span="1" style="width: 10%;">
+                <col span="1" style="width: 20%;">
+            </colgroup>
+            <% for(let i = 0; i < rows.length; i++) { %> 
+            <tr>
+                <td>
+                    <img src="<%= rows[i].thumbnail_photo %> ">
+                </td>
+                
+                <td class="info" style="padding-left:10px;">
+                    <span class="product-name" style="font-weight:600;"><%= rows[i].ProductName %></span>
+                    <br>
+                    <span class="product-description" style="font-size:12px" ><%= rows[i].Color %>/ <%= rows[i].Material %></span>
+                </td>
+                
+                <td class="quantity" style="text-align:center;"><%= rows[i].Quantity %></td>
+                
+                <td class="product-price">$<%= rows[i].Price %>.00</td>
+            </tr>
+            <% } %> 
+        </table>
+    </div>
+    
+    <div class="discount">
+        <form class="form-info" action="" method="POST">
+            <input style="float:left; width:75%;margin:0;" type="text" name="discount-code" id="discount-code" class="form-control" placeholder="discount-code">
+            <button  class="btn" type="submit">Apply</button>
+        </form>    
+    </div>
+    
+    <div class="sub-money" style="width:100%;">
+        <table style="width:100%">
+            <tr>
+              <td class="sub-title">Subtotal</td>
+              <td class="price">$<span id="subtotal"><%= subTotal %></span></td>
+            </tr>
+            <tr>
+              <td class="sub-title">Shipping</td>
+              <td class="price"><span id="shipfee">calculated at next step</span></td>
+            </tr>
+          </table> 
+    </div>
+    <div class="total">
+        <div class="sub-title"style="text-align: left; width:49%; display: inline-block;">Total</div>
+        <div class="price" style="width:50%;display:inline-block;font-size:25px;">$<span id="total"></span></div>
+    </div>
+</div>
