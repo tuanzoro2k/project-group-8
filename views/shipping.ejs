@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/shipping.css">
+</head>
+<body>
+    <div class="information">
+        <img src="https://i.imgur.com/l205sNT.png" alt="Logo" srcset="" style="max-width: 170px">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/my-cart">Cart</a></li>
+            <li class="breadcrumb-item"><a href="/info">Information</a></li>
+            <li class="breadcrumb-item active"aria-curent="page" >Shipping</li>
+            <li class="breadcrumb-item"><span>Payment</span></li>
+        </ul>
+        
+        <div class="content">
+            <table>
+                <colgroup>
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 75%;">
+                    <col span="1" style="width: 5%;">
+                </colgroup>
+                <tr>
+                    <td class="header">Contact</td>
+                    <td class="description" id="contact"></td>
+                    <td><a href="/info">Change</a></td>
+                </tr>
+                <tr class="lower-row">
+                    <td class="header">Shipping to</td>
+                    <td class="description"><span id="apartment"></span>, <span id="address"></span>, <span id="city"></span></td>
+                    <td><a href="/info">Change</a></td>
+                </tr>
+            </table>
+        </div>
+        <form action="/payment" method="POST">
+            <div class="shipping-method">
+                <h5 style="margin-bottom:30px;">Shipping method</h5>
+    
+                <div class="content">
+                    <table>
+                        <colgroup>
+                            <col span="1" style="width: 10%;">
+                            <col span="1" style="width: 85%;">
+                            <col span="1" style="width: 5%;">
+                        </colgroup>
+                        <tr>
+                            <td>
+                                <label class="check">
+                                    <input type="radio"  checked="checked" name="option" id="Standard" value="20" onclick="shipfee(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td class="description" id="20">Standard Delivery</td>
+                            <td class="price">$20.00</td>
+                        </tr>
+                        <tr class="lower-row">
+                            <td>
+                                <label class="check">
+                                    <input type="radio"  name="option" id="Express" value="30" onclick="shipfee(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td class="description" id="30">Express Delivery</td>
+                            <td class="price">$30.00</td>
+                        </tr>
+    
+                    </table>
+                </div>
+            </div>
+            <div class="checking">
+                <input class="btn" type="submit" value="Continue to Payment">
+                <a class="return" href="/info">Return to Information</a>
+            </div>
+        </form>
+    </div>
+    
+    <%- include('./partials/cost-discount') %>
+    
+    <script>
+        document.getElementById("contact").innerHTML=sessionStorage.getItem("email-tel");
+        document.getElementById("apartment").innerHTML=sessionStorage.getItem("apartment");
+        document.getElementById("address").innerHTML=sessionStorage.getItem("address");
+        document.getElementById("city").innerHTML=sessionStorage.getItem("city");
+    </script>
+    <script>
+        var subtotal=parseInt(document.getElementById("subtotal").innerHTML);
+        sessionStorage.setItem("fee",20);
+        sessionStorage.setItem("method","Standard");
+        document.getElementById("shipfee").innerHTML=sessionStorage.getItem("fee");
+        var total=subtotal+parseInt(sessionStorage.getItem("fee"));
+        sessionStorage.setItem("total",total);
+        document.getElementById("total").innerHTML=sessionStorage.getItem("total");
+        
+        function shipfee(e){
+            var ship=parseInt(e.value);
+            var total=subtotal+ship;
+            document.getElementById("shipfee").innerHTML=ship;
+            document.getElementById("total").innerHTML=total;
+            sessionStorage.setItem("fee",ship);
+            sessionStorage.setItem("total",total);
+            sessionStorage.setItem("method",e.id);
+        }
+    </script>
+
+</body>
+</html>
