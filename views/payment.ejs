@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/payment.css">
+</head>
+
+<body>
+    <div class="information">
+        <img src="https://i.imgur.com/l205sNT.png" alt="Logo" srcset="" style="max-width: 170px">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/my-cart">Cart</a></li>
+            <li class="breadcrumb-item"><a href="/info">Information</a></li>
+            <li class="breadcrumb-item"><a href="/shipping">Shipping</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Payment</li>
+        </ul>
+
+        <div class="content">
+            <table>
+                <colgroup>
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 75%;">
+                    <col span="1" style="width: 5%;">
+                </colgroup>
+                <tr>
+                    <td class="header">Contact</td>
+                    <td class="description" id="contact"></td>
+                    <td><a href="/info">Change</a></td>
+                </tr>
+                <tr class="lower-row">
+                    <td class="header">Shipping to</td>
+                    <td class="description"><span id="apartment"></span>, <span id="address"></span>, <span
+                            id="city"></span></td>
+                    <td><a href="/info">Change</a></td>
+                </tr>
+                <tr class="lower-row">
+                    <td class="header">Method</td>
+                    <td class="description"><span id="method"></span> - <span class="price">$<span
+                                id="fee"></span></span></td>
+                    <td><a href="/shipping">Change</a></td>
+                </tr>
+            </table>
+        </div>
+        <form id="form" class="form-info" action="">
+            <div class="Payment-method">
+                <h5>Payment method</h5>
+                <p style="margin-bottom:30px;">All transactions are secured and encrypted</p>
+
+                <div class="content-pay">
+                    <table style="width:100%;">
+                        <tr>
+                            <td>
+                                <label class="check">Pay by cash
+                                    <input type="radio" class="radioBtn" checked="checked" name="option" id="cash"
+                                        value="Cash" onclick="myFunction()">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                        </tr>
+
+                        <tr class="lower-row">
+                            <td>
+                                <label class="check">MOMO Wallet
+                                    <input type="radio" class="radioBtn" name="option" id="momo" value="momo"
+                                        onclick="myFunction()">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr class="lower-row">
+                            <td>
+                                <label class="check">Credit card
+                                    <input type="radio" class="radioBtn" name="option" id="credit" value="Credit"
+                                        onclick="myFunction()">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr class="lower-row format" id="credit_form">
+                            <td>
+                                <input type="text" name="card-number" id="card-number" class="form-control"
+                                    placeholder="Card number" required pattern="[0-9]{16}|[0-9]{19}">
+                                <input type="text" name="card-name" id="card-name" class="form-control"
+                                    placeholder="Name on card" required>
+                                <input style="float: left; width:49%;" type="text" name="date" id="date"
+                                    class="form-control" placeholder="Expiration date (MM/YY)" required
+                                    pattern="(?:0[1-9]|1[0-2])/[0-9]{2}">
+                                <input style="float: right; width:49%;" type="text" name="sec-code" id="sec-code"
+                                    class="form-control" placeholder="Security code" required
+                                    pattern="[0-9]{3}|[0-9]{4}">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="checking">
+                <a class="btn" id="submitBtn">Pay now</a>
+                <a class="return" href="/shipping">Return to shipping</a>
+            </div>
+        </form>
+    </div>
+
+    <%- include('./partials/cost-discount') %>
+
+        <!-- Confirm windows -->
+        <div class="successfully" id="successfully">
+            <div class="successfully-content">
+                <p style="font-size: 18px; padding-left: 20px;">Your order successfully created!</p>
+                <div class="order-info" style="padding-left: 20px;">
+                    <h4>Order details:</h4>
+                    <p id="fullName">Name:</p>
+                    <p id="displayAddress">Address:</p>
+                    <p id="shippingMethod">Shipping method: </p>
+                    <p id="totalCost">Total cost: </p>
+                    <h3>Thanks for buying!</h3>
+                </div>
+                <div class="confirmBtn" style="text-align: center; margin-top: 30px; font-size: 18px;">
+                    <a class="btn confirm left" href="/user-profile">View order's details</a>
+                    <a class="btn confirm right" href="/">Continue shopping</a>
+                </div>
+            </div>
+        </div>
+        <!-- Start Pay now function -->
+        <script>
+            document.getElementById("submitBtn").onclick = function () {
+                // document.getElementById("fullName").innerHTML = "Name: " + sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName");
+                // document.getElementById("displayAddress").innerHTML = "Address: " + sessionStorage.getItem("apartment") + ", " + sessionStorage.getItem("address") + ", " + sessionStorage.getItem("city");
+                // document.getElementById("shippingMethod").innerHTML = "Shipping method: " + sessionStorage.getItem("method") + " Delivery";
+                // document.getElementById("totalCost").innerHTML = "Total cost: $" + sessionStorage.getItem("total") + ".00";
+                // document.getElementById("successfully").style.display = "inline-block";
+                var radioBtn = document.getElementsByClassName("radioBtn");
+                var choice = "";
+                Array.from(radioBtn).forEach(function (element) {
+                    if (element.checked == true) {
+                        choice = element.value;
+                    }
+                })
+                console.log('"come heree');
+
+                console.log(sessionStorage.getItem("totalCost"))
+                axios.patch('/orderFinish', {
+                    contact: sessionStorage.getItem("email-tel"),
+                    addr: sessionStorage.getItem("address"),
+                    addrDetail: sessionStorage.getItem("apartment"),
+                    city: sessionStorage.getItem("city"),
+                    shipMeth: sessionStorage.getItem("method"),
+                    payMeth: choice,
+                    totalCost: sessionStorage.getItem("total")
+                })
+                    .then(function (response) {
+                        console.log(response.data);
+                        const { orderID } = response.data
+                        console.log(orderID);
+                        if (choice === "momo") {
+                            // Request momo payment url
+                            axios.post('/momo/buy', {
+                                contact: sessionStorage.getItem("email-tel"),
+                                orderID,
+                                totalCost: sessionStorage.getItem("total")
+                            }).then(({ data: { payUrl } }) => {
+                                // Redirect to momo page
+                                window.location.href = payUrl;
+                            })
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        </script>
+        <!-- End Pay now function -->
+        <script>
+            document.getElementById("contact").innerHTML = sessionStorage.getItem("email-tel");
+            document.getElementById("apartment").innerHTML = sessionStorage.getItem("apartment");
+            document.getElementById("address").innerHTML = sessionStorage.getItem("address");
+            document.getElementById("city").innerHTML = sessionStorage.getItem("city");
+            function myFunction() {
+                var cash = document.getElementById("cash")
+                var momo = document.getElementById("momo")
+                var credit = document.getElementById("credit");
+                var credit_form = document.getElementById("credit_form");
+                if (credit.checked == true) {
+                    credit_form.style.display = "table-row";
+                }
+                if (cash.checked == true) {
+                    credit_form.style.display = "none";
+                }
+                if (momo.checked == true) {
+                    credit_form.style.display = "none";
+                }
+            }
+        </script>
+        <script>
+            document.getElementById("fee").innerHTML = sessionStorage.getItem("fee");
+            document.getElementById("method").innerHTML = sessionStorage.getItem("method");
+            document.getElementById("shipfee").innerHTML = sessionStorage.getItem("fee");
+            document.getElementById("total").innerHTML = sessionStorage.getItem("total");
+        </script>
+
+</body>
+
+</html>
