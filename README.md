@@ -1,5 +1,5 @@
-**ProjectDatabase**
-How to run this project
+**ProjectManagemnet**
+- How to run this project
 1. Run `npm install`
 2. Create file .env then copy the below code to .env file and save:
 ```
@@ -9,5 +9,6 @@ SESS_NAME = 'semail'
 SESS_SECRET = process.env.ACCESS_TOKEN_SECRET
 SESS_LIFETIME = 3600000
 ```
-3. Open MySql WorkBench and execute file FinalQuery to initialize database.
-4. Run the project by command: `npm run devStart`
+3. Open MySql WorkBench( or any mysql tools ) and execute file SQLscript.sql to initialize database.
+4. Config db in folder config/db.
+5. Run the project by command: `npm run devStart`.
