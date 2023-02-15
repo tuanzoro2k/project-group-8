@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/successful-payment.css">
+</head>
+<body>
+    <div class="information">
+        <img src="https://i.imgur.com/l205sNT.png" alt="Logo" srcset="" style="max-width: 170px">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">Cart</li>
+            <li class="breadcrumb-item">Information</li>
+            <li class="breadcrumb-item" >Shipping</li>
+            <li class="breadcrumb-item active" aria-current="page">Payment</li>
+        </ul>
+        
+        <div class="content">
+            <h6 style="font-size: large; font-weight: bold;">Order's information</h6>
+            <span style="font-weight: 600;">Shipping's information</span>
+            <table class="mt-2">
+                <tr>
+                    <td>
+                        <span id="fullName"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="emailTel"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="apartment"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="address"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="city"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Vietnam
+                    </td>
+                </tr>
+            </table>
+            <span class="d-block mt-2" style="font-weight: 600;">Shipping method</span>
+            <span id="shippingMethod" style="display: inline-block;"><%= rows[0].ShippingMethod %></span>
+            <span class="d-block mt-2" style="font-weight: 600;">Payment method</span>
+            <span id="paymentMethod" style="display: inline-block;"><%= rows[0].PaymenMethod %></span>
+            
+        </div>
+        <div>
+            <button class="btn btn-primary" style="float: right; padding: 12px 12px;">Continue shopping</button>
+            <a href=""><i class="fa-solid fa-circle"></i></a>
+            <div><i class="fa-solid fa-circle"></i>Need help? <a href="">Contact us</a></div>
+        </div>
+    </div>
+
+    <%- include('./partials/cost-discount') %>
+
+    <script>
+        document.getElementById("fullName").innerHTML = sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName");
+        document.getElementById("shippingMethod").innerHTML = sessionStorage.getItem("method");
+        document.getElementById("emailTel").innerHTML=sessionStorage.getItem("email-tel");
+        document.getElementById("apartment").innerHTML=sessionStorage.getItem("apartment");
+        document.getElementById("address").innerHTML=sessionStorage.getItem("address");
+        document.getElementById("city").innerHTML=sessionStorage.getItem("city");
+        document.getElementById("total").innerHTML=sessionStorage.getItem("total");
+    </script>
+
+</body>
+</html>
